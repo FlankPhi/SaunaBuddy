@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='stylesheets/style.css' />
+      <script src="javascripts/js-fluid-meter.js"></script>
+
+  </head>
+  <body>
+  <div class="container">
+      <div class="row">
+          <div>
+              <h1 class="saunabuddy_header"><img src="images/logo.png" style="height: 15%; width: 15%" alt="image not found"><%= title %></h1>
+          </div>
+      </div>
+  </div>
+    <div class="container">
+        <div class="row">
+            <h1 class="text-center">Temperature</h1>
+            <div id="fluid-meter"></div>
+        </div>
+        <div class="row">
+            <h1 class="text-center">Humidity</h1>
+            <div id="fluid-meter2"></div>
+        </div>
+        <div class="row">
+            <h1 class="text-center">Time</h1>
+            <div id="fluid-meter3"></div>
+        </div>
+    </div>
+  </body>
+  <script src="javascripts/init-fluid-meters.js"></script>
+  <script>
+      fm.setPercentage(<%= current_temp %>);
+      fm2.setPercentage(<%= current_humidity %>);
+      fm3.setPercentage(<%= current_time %>);
+      const ws = new WebSocket("ws://localhost:8080");
+      ws.addEventListener("open", () => {
+          console.log("We are connected");
+      })
+      ws.addEventListener("message", ev => {
+          console.log(ev);
+          let data = JSON.parse(ev.data);
+          if(data.current_temp){
+              fm.setPercentage(data.current_temp);
+          }
+          if(data.current_humidity){
+              fm2.setPercentage(data.current_humidity);
+          }
+          if(data.current_time){
+              fm3.setPercentage(data.current_time);
+          }
+      })
+  </script>
+</html>
+
