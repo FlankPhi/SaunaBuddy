@@ -34,7 +34,7 @@
       fm.setPercentage(<%= current_temp %>);
       fm2.setPercentage(<%= current_humidity %>);
       fm3.setPercentage(<%= current_time %>);
-      const ws = new WebSocket("ws://localhost:8080");
+      const ws = new WebSocket("ws://10.0.1.26:8080");
       ws.addEventListener("open", () => {
           console.log("We are connected");
       })
