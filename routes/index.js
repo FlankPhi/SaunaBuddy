@@ -9,7 +9,7 @@ let current_humidity = 0;
 let current_time = 0;
 
 const wss = new WebSocket.Server({
-    port: 8081,
+    port: 8080,
     perMessageDeflate: {
         zlibDeflateOptions: {
             // See zlib defaults.
