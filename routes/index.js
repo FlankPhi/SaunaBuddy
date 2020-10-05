@@ -57,7 +57,8 @@ router.post('/temp', function (req, res) {
             res.status(200).json({"current_temp": "updated", "succsess": true});
 
         }else {
-            console.log(req);
+            console.log("body: ");
+            console.log(req.body);
             res.status(401).json({"current_temp": "missing", "succsess": false});
         }
 });
