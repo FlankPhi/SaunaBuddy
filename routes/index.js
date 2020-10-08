@@ -4,9 +4,12 @@ var router = express.Router();
 const WebSocket = require('ws');
 var _ws;
 
+const db = require('../Database/db_interface');
+
 let current_temp = 0;
 let current_humidity = 0;
 let current_time = 0;
+let current_run = 0;
 
 const wss = new WebSocket.Server({
     port: 8080,
@@ -49,12 +52,17 @@ router.post('/temp', function (req, res) {
 
         if (req.body.current_temp){
             current_temp = req.body.current_temp;
+
             if (_ws) {
                 _ws.send(JSON.stringify({"current_temp": current_temp}));
             }else {
                 console.log("no Client connected");
             }
-            res.status(200).json({"current_temp": "updated", "succsess": true});
+            if(db.insertTemp(current_temp)) {
+                res.status(200).json({"current_temp": "updated", "succsess": true});
+            }else {
+                res.status(401).json({"current_temp": "insert failed", "succsess": false});
+            }
 
         }else {
             console.log("body: ");
@@ -96,11 +104,13 @@ router.post('/data', function (req, res) {
         current_time = req.body.current_time;
         current_humidity = req.body.current_humidity;
         current_temp = req.body.current_temp;
+        current_run = req.body.current_run;
         if (_ws) {
             _ws.send(JSON.stringify({
                 "current_temp": current_temp,
                 "current_humidity": current_humidity,
-                "current_time": current_time
+                "current_time": current_time,
+                "current_run": current_run
             }));
         }else {
             console.log("no Client connected");
