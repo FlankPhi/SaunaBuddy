@@ -1,13 +1,13 @@
 const Pool = require('pg').Pool;
-const result = require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
+//const result = require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
 
 
 const pgPool = new Pool({
-    host: process.env.POSTGRES_HOST,
-    user: process.env.POSTGRES_USER,
-    database: process.env.POSTGRES_DATABASE,
-    password: process.env.POSTGRES_PASS,
-    port: process.env.POSTGRES_PORT
+    host: 'localhost',//process.env.POSTGRES_HOST,
+    user: 'postgres',//process.env.POSTGRES_USER,
+    database: 'postgres',// process.env.POSTGRES_DATABASE,
+    password: 'myPassword',//process.env.POSTGRES_PASS,
+    port: '5432'//process.env.POSTGRES_PORT
 });
 
 const insertTemp = function (temp) {
