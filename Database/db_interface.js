@@ -40,7 +40,7 @@ const insertData = function(current_temp, current_humidity, current_time, curren
     pgPool.query(pg_string)
         .then(resu => {
             console.log("inserted data");
-            res.status(500).json({"data": "inserted", "succsess": true});
+            res.status(200).json({"data": "inserted", "succsess": true});
     })
         .catch( err => {
             console.log("error inserting data ");
