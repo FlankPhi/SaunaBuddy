@@ -20,5 +20,6 @@ const insertTemp = function (temp) {
 };
 
 module.exports = {
-  insertTemp
+  insertTemp,
+  query: (text, params) => pool.query(text, params),
 };
