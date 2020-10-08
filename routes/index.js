@@ -48,7 +48,7 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'SaunaBuddy', current_temp: current_temp, current_humidity: current_humidity, current_time: current_time });
 });
 
-router.post('/temp', async function (req, res) {
+router.post('/temp', async (req, res) => {
 
         if (req.body.current_temp){
             current_temp = req.body.current_temp;
