@@ -15,8 +15,12 @@ const insertTemp = function (temp) {
     let pg_string = "INSERT into \"SaunaBuddy\" (temp, humidity, time, timestamp, run) VALUES (" + temp + ", 0,0,now(),'somerun');";
     console.log(pg_string);
     pgPool.query(pg_string)
-        .then(res =>   console.log("inserted temperature"))
-        .catch(err => console.log("inserted temperature FAILED"))
+        .then(res => {  console.log("inserted temperature");
+        return true;
+        })
+        .catch(err => {console.log("inserted temperature FAILED")
+        return false;
+        })
 };
 
 module.exports = {
