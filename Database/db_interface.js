@@ -10,16 +10,17 @@ const pgPool = new Pool({
     port: '5432'//process.env.POSTGRES_PORT
 });
 
-const insertTemp = async function (temp) {
+const insertTemp = async function (temp, res) {
     console.log("inserting temperatures");
     let pg_string = "INSERT into \"SaunaBuddy\" (temp, humidity, time, timestamp, run) VALUES (" + temp + ", 0,0,now(),'somerun');";
     console.log(pg_string);
     pgPool.query(pg_string)
         .then(res => {  console.log("inserted temperature");
-        return true;
+        res.status(200).json({"current_temp": "updated", "succsess": true});
         })
-        .catch(err => {console.log("inserted temperature FAILED")
-        return false;
+        .catch(err => {
+            console.log("inserted temperature FAILED");
+            res.status(500).json({"current_temp": "insert failed", "succsess": false});
         })
 };
 

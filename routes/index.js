@@ -60,12 +60,7 @@ router.post('/temp', async (req, res) => {
             }
             //const { rows } = await db.query('INSERT into \"SaunaBuddy\" (temp, humidity, time, timestamp, run) VALUES ($1, 0,0,now(),\'somerun\');', [current_temp]);
             //console.log(rows);
-             if(await db.insertTemp(current_temp)){
-                 res.status(200).json({"current_temp": "updated", "succsess": true});
-             }else {
-                 res.status(500).json({"current_temp": "insert failed", "succsess": false});
-             }
-
+             await db.insertTemp(current_temp, res);
                 //res.status(401).json({"current_temp": "insert failed", "succsess": false});
 
 
