@@ -95,7 +95,7 @@ router.post('/time', function (req, res) {
 });
 
 router.post('/data', function (req, res) {
-    if (req.body.current_time && req.body.current_humidity && req.body.current_temp){
+    if (req.body.current_time && req.body.current_humidity && req.body.current_temp && req.body.current_run){
         current_time = req.body.current_time;
         current_humidity = req.body.current_humidity;
         current_temp = req.body.current_temp;
@@ -111,7 +111,7 @@ router.post('/data', function (req, res) {
             console.log("no Client connected");
         }
         db.insertData(current_temp, current_humidity, current_time, current_run, res);
-        res.status(200).json({"current_time": "updated", "current_temp": "updated", "current_humidity": "updated", "succsess": true});
+        //res.status(200).json({"current_time": "updated", "current_temp": "updated", "current_humidity": "updated", "succsess": true});
     }else {
         res.status(401).json({"data": "missing", "succsess": false});
     }
