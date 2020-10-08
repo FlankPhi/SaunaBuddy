@@ -10,7 +10,7 @@ const pgPool = new Pool({
     port: '5432'//process.env.POSTGRES_PORT
 });
 
-const insertTemp = function (temp) {
+const insertTemp = async function (temp) {
     console.log("inserting temperatures");
     let pg_string = "INSERT into \"SaunaBuddy\" (temp, humidity, time, timestamp, run) VALUES (" + temp + ", 0,0,now(),'somerun');";
     console.log(pg_string);
