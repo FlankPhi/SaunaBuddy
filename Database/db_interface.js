@@ -21,5 +21,5 @@ const insertTemp = function (temp) {
 
 module.exports = {
   insertTemp,
-  query: (text, params) => pool.query(text, params),
+  query: (text, params) => pgPool.query(text, params),
 };
