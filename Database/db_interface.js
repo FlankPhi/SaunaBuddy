@@ -29,7 +29,7 @@ const insertData = function(current_temp, current_humidity, current_time, curren
     console.log("Inserting data");
 
     let pg_string = "INSERT into \"SaunaBuddy\" (temp, humidity, time, timestamp, run) " +
-        "VALUES (" + temp +
+        "VALUES (" + current_temp +
         ", " + current_humidity +
         ", " + current_time + "" +
         ", now()," +
