@@ -48,21 +48,16 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'SaunaBuddy', current_temp: current_temp, current_humidity: current_humidity, current_time: current_time });
 });
 
-router.post('/temp', async (req, res) => {
+router.post('/temp', (req, res) => {
 
         if (req.body.current_temp){
             current_temp = req.body.current_temp;
-
             if (_ws) {
                 _ws.send(JSON.stringify({"current_temp": current_temp}));
             }else {
                 console.log("no Client connected");
             }
-            //const { rows } = await db.query('INSERT into \"SaunaBuddy\" (temp, humidity, time, timestamp, run) VALUES ($1, 0,0,now(),\'somerun\');', [current_temp]);
-            //console.log(rows);
-             await db.insertTemp(current_temp, res);
-                //res.status(401).json({"current_temp": "insert failed", "succsess": false});
-
+             db.insertTemp(current_temp, res);
 
         }else {
             console.log("body: ");
