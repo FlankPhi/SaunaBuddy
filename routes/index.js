@@ -48,7 +48,7 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'SaunaBuddy', current_temp: current_temp, current_humidity: current_humidity, current_time: current_time });
 });
 
-router.post('/temp', function (req, res) {
+router.post('/temp', async function (req, res) {
 
         if (req.body.current_temp){
             current_temp = req.body.current_temp;
@@ -58,11 +58,10 @@ router.post('/temp', function (req, res) {
             }else {
                 console.log("no Client connected");
             }
-            if(db.insertTemp(current_temp)) {
-                res.status(200).json({"current_temp": "updated", "succsess": true});
-            }else {
-                res.status(401).json({"current_temp": "insert failed", "succsess": false});
-            }
+            await db.insertTemp(current_temp);
+            res.status(200).json({"current_temp": "updated", "succsess": true});
+                //res.status(401).json({"current_temp": "insert failed", "succsess": false});
+
 
         }else {
             console.log("body: ");
