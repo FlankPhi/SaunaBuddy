@@ -24,7 +24,32 @@ const insertTemp = function (temp, res) {
         })
 };
 
+
+const insertData = function(current_temp, current_humidity, current_time, current_run, res){
+    console.log("Inserting data");
+
+    let pg_string = "INSERT into \"SaunaBuddy\" (temp, humidity, time, timestamp, run) " +
+        "VALUES (" + temp +
+        ", " + current_humidity +
+        ", " + current_time + "" +
+        ", now()," +
+        "\' " + current_run + "\');";
+
+    console.log(pg_string);
+
+    pgPool.query(pg_string)
+        .then(resu => {
+            console.log("inserted data");
+            res.status(500).json({"data": "inserted", "succsess": true});
+    })
+        .catch( err => {
+            console.log("error inserting data ");
+            res.status(500).json({"data": "insert failed", "succsess": false});
+        })
+
+};
 module.exports = {
-  insertTemp,
-  query: (text, params) => pgPool.query(text, params),
+    insertTemp,
+    insertData,
+    query: (text, params) => pgPool.query(text, params),
 };

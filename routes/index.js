@@ -110,6 +110,7 @@ router.post('/data', function (req, res) {
         }else {
             console.log("no Client connected");
         }
+        db.insertData(current_temp, current_humidity, current_time, current_run, res);
         res.status(200).json({"current_time": "updated", "current_temp": "updated", "current_humidity": "updated", "succsess": true});
     }else {
         res.status(401).json({"data": "missing", "succsess": false});
