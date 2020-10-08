@@ -14,23 +14,9 @@ const insertTemp = function (temp) {
     console.log("inserting temperatures");
     let pg_string = "INSERT into \"SaunaBuddy\" (temp, humidity, time, timestamp, run) VALUES (" + temp + ", 0,0,now(),'somerun');";
     console.log(pg_string);
-    pgPool.query(pg_string, (error, result) => {
-        if (error) {
-            console.log("inserted temperature FAILED");
-            //response.status(500).json({ "Error": "internal error querying totes", "msg": error });
-            // throw error;
-            return false;
-        }
-        if (result) {
-            console.log("inserted temperature");
-            //result.rows[0].bins = JSON.parse(result.rows[0].bins);
-            //result.rows[0].updated_line_items = JSON.parse(result.rows[0].updated_line_items);
-            //result.rows[0].order_id = result.rows[0].order_id[0];
-            //response.status(200).json(result.rows[0]);
-            return true;
-        }
-    });
-
+    pgPool.query(pg_string)
+        .then(res =>   console.log("inserted temperature"))
+        .catch(err => console.log("inserted temperature FAILED"))
 };
 
 module.exports = {
