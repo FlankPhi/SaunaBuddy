@@ -24,7 +24,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/:run_id', function (req, res) {
-
+    res.render('hist_grath', { title: 'SaunaBuddy'});
 });
 
 module.exports = router;

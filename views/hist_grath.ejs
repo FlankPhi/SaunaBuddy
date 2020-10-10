@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='stylesheets/style.css' />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script src="javascripts/js-fluid-meter.js"></script>
+    <script>
+        function myFunction(entry) {
+            console.log(entry);
+            location.replace("http://10.0.1.26:3000/history/" + entry);
+        }
+    </script>
+
+</head>
+<body>
+<div class="container">
+    <h1 class="saunabuddy_header"><img src="images/logo.png" style="height: 15%; width: 15%" alt="image not found"><%= title %></h1>
+</div>
+</body>
+</html>
