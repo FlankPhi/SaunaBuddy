@@ -24,7 +24,13 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/:run_id', function (req, res) {
-    res.render('hist_grath', { title: 'SaunaBuddy'});
+    console.log(req.params.run_id);
+    let pg_string = "SELECT * FROM \"SaunaBuddy\" WHERE run =  '" + req.params.run_id + "' ORDER BY timestamp;";
+    pgPool.query(pg_string).then(resu => {
+        console.log(resu.rows);
+        res.render('hist_grath', { title: 'SaunaBuddy', data: resu.rows});
+    })
+
 });
 
 module.exports = router;

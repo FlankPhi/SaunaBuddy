@@ -15,6 +15,7 @@
     "package.json": "^2.0.1",
     "serve-favicon": "^2.5.0",
     "ws": "^7.3.1",
-    "pg": "^8.4.0"
+    "pg": "^8.4.0",
+    "fusioncharts": "^3.15.3"
   }
 }
