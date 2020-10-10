@@ -15,7 +15,7 @@
 <body>
 <div class="container">
     <%entry.forEach(function (entri) { %>
-            <button  class="w3-btn w3-round-xxlarge w3-black" style="margin-bottom: 10px" onclick="myFunction(<%= entri.run%>)">
+            <button  class="w3-btn w3-round-xxlarge w3-black" style="margin-bottom: 10px" onclick="myFunction('<%= entri.run%>')">
                 <%= entri.run%>
             </button>
     <% });%>
