@@ -33,7 +33,7 @@ const insertData = function(current_temp, current_humidity, current_time, curren
         ", " + current_humidity +
         ", " + current_time + "" +
         ", now()," +
-        "\' " + current_run + "\');";
+        "\'" + current_run + "\');";
 
     console.log(pg_string);
 
@@ -48,8 +48,22 @@ const insertData = function(current_temp, current_humidity, current_time, curren
         })
 
 };
+
+const get_time = function(res){
+    console.log("Geting current time");
+    let pg_string = "SELECT  now();";
+    pgPool.query(pg_string).then(resu => {
+        console.log("Retuning current time");
+        res.status(200).json({"time": resu[0], "succsess": true});
+    })
+        .catch(err => {
+            console.log("error retuning current time");
+            res.status(500).json({"time": "get failed", "succsess": false});
+        })
+};
 module.exports = {
     insertTemp,
     insertData,
+    get_time,
     query: (text, params) => pgPool.query(text, params),
 };
