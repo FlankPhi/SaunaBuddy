@@ -3,17 +3,16 @@
 <head>
     <title><%= title %></title>
     <link rel='stylesheet' href='stylesheets/style.css' />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <script src="javascripts/js-fluid-meter.js"></script>
 
 </head>
 <body>
 <div class="container">
     <%entry.forEach(function (entri) { %>
-        <div>
-            <button class="hist_button">
+            <button  class="w3-btn w3-black">
                 <%= entri.run%>
             </button>
-        </div>
     <% });%>
 
 </div>
