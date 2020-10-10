@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='stylesheets/style.css' />
+    <script src="javascripts/js-fluid-meter.js"></script>
+
+</head>
+<body>
+<div class="container">
+    <%entry.forEach(function (entri) { %>
+        <div>
+            <button class="hist_button">
+                <%= entri%>
+            </button>
+        </div>
+    <% });%>
+
+</div>
+</body>
+</html>
+
