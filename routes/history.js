@@ -16,11 +16,15 @@ const pgPool = new Pool({
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-    let pg_string = "SELECT distinct run FROM \"SaunaBuddy\"";
+    let pg_string = "SELECT distinct run FROM \"SaunaBuddy\" order by run desc";
     pgPool.query(pg_string).then(resu => {
         console.log(resu.rows);
         res.render('histroy', { title: 'SaunaBuddy', entry: resu.rows});
     });
+});
+
+router.get('/:run_id', function (req, res) {
+
 });
 
 module.exports = router;

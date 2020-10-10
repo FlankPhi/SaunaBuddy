@@ -5,12 +5,17 @@
     <link rel='stylesheet' href='stylesheets/style.css' />
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <script src="javascripts/js-fluid-meter.js"></script>
+    <script>
+        function myFunction(entry) {
+            console.log(entry);
+        }
+    </script>
 
 </head>
 <body>
 <div class="container">
     <%entry.forEach(function (entri) { %>
-            <button  class="w3-btn w3-black" style="margin-bottom: 30px">
+            <button  class="w3-btn w3-round-xxlarge w3-black" style="margin-bottom: 10px" onclick="myFunction(<%= entri.run%>)">
                 <%= entri.run%>
             </button>
     <% });%>
