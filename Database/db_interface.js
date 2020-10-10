@@ -54,7 +54,7 @@ const get_time = function(res){
     let pg_string = "SELECT  now();";
     pgPool.query(pg_string).then(resu => {
         console.log("Retuning current time");
-        res.status(200).json({"time": resu.rows[0], "succsess": true});
+        res.status(200).json({"time": resu.rows[0].now, "succsess": true});
     })
         .catch(err => {
             console.log("error retuning current time");
