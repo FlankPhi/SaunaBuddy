@@ -42,19 +42,7 @@
       ws.addEventListener("open", () => {
           console.log("We are connected");
       })
-      ws.addEventListener("message", ev => {
-          console.log(ev);
-          let data = JSON.parse(ev.data);
-          if(data.current_temp){
-              fm.setPercentage(data.current_temp);
-          }
-          if(data.current_humidity){
-              fm2.setPercentage(data.current_humidity);
-          }
-          if(data.current_time){
-              fm3.setPercentage(data.current_time);
-          }
-      })
+
       document.getElementById("fluid-meter").addEventListener('click',function (event) {
           document.getElementById("overlay").style.display = "block";
           console.log("fluid-meter clicked ");
@@ -94,6 +82,23 @@
           options: {}
 
       });
+      ws.addEventListener("message", ev => {
+          console.log(ev);
+          let data = JSON.parse(ev.data);
+          if(data.current_temp){
+              fm.setPercentage(data.current_temp);
+              chart.data.datasets[0].data.push(data.current_temp)
+          }
+          if(data.current_humidity){
+              fm2.setPercentage(data.current_humidity);
+              chart.data.datasets[1].data.push(data.current_humidity)
+          }
+          if(data.current_time){
+              fm3.setPercentage(data.current_time);
+              chart.data.labels.push(data.current_time)
+          }
+          chart.update();
+      })
   </script>
 </html>
 
