@@ -46,8 +46,8 @@
     });
 
     <%data.forEach(function (data_entry) { %>
-    data.datasets.data.push(<%= data_entry.temp%>)
-    data.labels.push(<%= data_entry.timestamp%>)
+    data.datasets.data.push("<%= data_entry.temp%>");
+    data.labels.push(<%= data_entry.timestamp%>);
     console.log(<%= data_entry.temp%>)
     console.log(<%= data_entry.humidity%>)
     <% });%>
