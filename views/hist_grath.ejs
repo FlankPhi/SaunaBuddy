@@ -43,11 +43,12 @@
 
         // Configuration options go here
         options: {}
+
     });
 
     <%data.forEach(function (data_entry) { %>
-    data.datasets.data.push(<%= data_entry.temp%>);
-    data.labels.push("<%= data_entry.timestamp%>");
+    chart.data.datasets.data.push(<%= data_entry.temp%>);
+    chart.data.labels.push("<%= data_entry.timestamp%>");
     console.log(<%= data_entry.temp%>)
     console.log(<%= data_entry.humidity%>)
     <% });%>
