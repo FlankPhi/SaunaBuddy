@@ -15,6 +15,7 @@
       </div>
   </div>
     <div class="container">
+        <div id="overlay" onclick="off()"></div>
         <div class="row">
             <h1 class="text-center">Temperature</h1>
             <div id="fluid-meter"></div>
@@ -52,8 +53,18 @@
           }
       })
       document.getElementById("fluid-meter").addEventListener('click',function (event) {
+          document.getElementById("overlay").style.display = "block";
           console.log("fluid-meter clicked ");
       })
+      document.getElementById("fluid-meter2").addEventListener('click',function (event) {
+          console.log("fluid-meter2 clicked ");
+      })
+      document.getElementById("fluid-meter3").addEventListener('click',function (event) {
+          console.log("fluid-meter3 clicked ");
+      })
+      function off() {
+          document.getElementById("overlay").style.display = "none";
+      }
   </script>
 </html>
 
