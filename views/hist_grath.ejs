@@ -54,6 +54,7 @@
 
     <%data.forEach(function (data_entry) { %>
     chart.data.datasets[0].data.push(<%= data_entry.temp%>);
+    chart.data.datasets[1].data.push(<%= data_entry.humidity%>);
     chart.data.labels.push("<%= data_entry.timestamp%>");
     console.log(<%= data_entry.temp%>)
     console.log(<%= data_entry.humidity%>)
