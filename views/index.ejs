@@ -99,6 +99,19 @@
           }
           chart.update();
       })
+
+      <%last_res_data.forEach(function (data) { %>
+            if(data.temp){
+                chart.data.datasets[0].data.push(data.temp)
+            }
+            if(data.humidity){
+                chart.data.datasets[1].data.push(data.humidity)
+            }
+            if(data.time){
+                chart.data.labels.push(data.time)
+            }
+      <% });%>
+        chart.update();
   </script>
 </html>
 

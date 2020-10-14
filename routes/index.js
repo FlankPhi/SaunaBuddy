@@ -48,7 +48,7 @@ router.get('/', async function(req, res, next) {
     console.log("calling function");
     let resu = await db.get_last_hours();
     console.log("rendering");
-  res.render('index', { title: 'SaunaBuddy', current_temp: current_temp, current_humidity: current_humidity, current_time: current_time });
+  res.render('index', { title: 'SaunaBuddy', current_temp: current_temp, current_humidity: current_humidity, current_time: current_time, last_res_data: resu.rows});
 });
 
 router.get('/time', function(req, res, next) {
