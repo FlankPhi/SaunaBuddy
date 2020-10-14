@@ -45,6 +45,9 @@ wss.on("connection", ws => {
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+    console.log("calling function");
+    let resu = db.get_last_hours();
+    console.log("rendering");
   res.render('index', { title: 'SaunaBuddy', current_temp: current_temp, current_humidity: current_humidity, current_time: current_time });
 });
 

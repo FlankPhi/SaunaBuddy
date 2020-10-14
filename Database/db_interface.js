@@ -61,9 +61,21 @@ const get_time = function(res){
             res.status(500).json({"time": "get failed", "succsess": false});
         })
 };
+ function get_last_hours(){
+    console.log("Getting past 2 hour entrys");
+    let pg_string = "SELECT * FROM \"SaunaBuddy\" WHERE timestamp  BETWEEN NOW() - INTERVAL '2 HOURS' AND NOW() order by timestamp;"
+    pgPool.query(pg_string).then(resu => {
+        console.log("Retuning past 2 hour entrys");
+        return resu;
+    }).catch(err => {
+        console.log("error retuning past 2 hour entrys");
+        return err;
+    })
+};
 module.exports = {
     insertTemp,
     insertData,
     get_time,
+    get_last_hours,
     query: (text, params) => pgPool.query(text, params),
 };
