@@ -66,8 +66,8 @@ const get_time = function(res){
     let pg_string = "SELECT * FROM \"SaunaBuddy\" WHERE timestamp  BETWEEN NOW() - INTERVAL '2 HOURS' AND NOW() order by timestamp;"
     await pgPool.query(pg_string).then(resu => {
         console.log("Retuning past 2 hour entrys");
-        console.log(resu);
-        return resu;
+        console.log(resu.rows);
+        return resu.rows;
     }).catch(err => {
         console.log("error retuning past 2 hour entrys");
         return err;
