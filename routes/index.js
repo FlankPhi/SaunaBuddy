@@ -49,7 +49,7 @@ router.get('/', async function(req, res, next) {
     let resu = await db.query("SELECT * FROM \"SaunaBuddy\" WHERE timestamp  BETWEEN NOW() - INTERVAL '2 HOURS' AND NOW() order by timestamp;");
     console.log("rendering");
     console.log(resu);
-  res.render('index', { title: 'SaunaBuddy', current_temp: current_temp, current_humidity: current_humidity, current_time: current_time, last_res_data: resu});
+  res.render('index', { title: 'SaunaBuddy', current_temp: current_temp, current_humidity: current_humidity, current_time: current_time, last_res_data: resu.rows});
 });
 
 router.get('/time', function(req, res, next) {
