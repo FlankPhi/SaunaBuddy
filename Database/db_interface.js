@@ -71,6 +71,7 @@ const get_time = function(res){
         console.log("error retuning past 2 hour entrys");
         return err;
     })
+
 };
 module.exports = {
     insertTemp,
